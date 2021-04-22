@@ -30,6 +30,30 @@
   }
 }
 
+.currentEpisode {
+  text-align: center;
+
+  img {
+    border-radius: 1.5rem;
+  }
+
+  strong {
+    margin-top: 2rem;
+    font: 600 1.25rem Lexend, sans-serif;
+    line-height: 1.75rem;
+
+    display: block;
+  }
+
+  span {
+    margin-top: 1rem;
+    opacity: 0.6;
+    line-height: 1.5rem;
+
+    display: block;
+  }
+}
+
 .emptyPlayer {
   padding: 4rem;
   width: 100%;
@@ -42,7 +66,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-} 
+}
 
 .progress {
   font-size: 0.875rem;
@@ -71,6 +95,7 @@
 
 .buttons {
   margin-top: 2.5rem;
+  transition: 0.2s;
 
   display: flex;
   gap: 1.5rem;
@@ -82,11 +107,23 @@
     background: transparent;
     font-size: 0;
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      filter: brightness(0.7);
+    }
+
     &.playButton {
       width: 4rem;
       height: 4rem;
       border-radius: 1rem;
       background: var(--purple-400);
+
+      &:hover:not(:disabled) {
+        filter: brightness(0.95);
+      }
     }
   }
 }

@@ -28,6 +28,8 @@
     "camelcase": "off",
     "import/no-duplicates": "off",
     "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "no-unused-vars": ["error", { "args": "none" }],
     "jsx-a11y/anchor-is-valid": "off",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
