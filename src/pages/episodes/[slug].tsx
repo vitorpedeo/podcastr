@@ -1,10 +1,12 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
 import api from '../../services/api';
+import { usePlayerContext } from '../../contexts/PlayerContext';
 import convertDurationToTimeString from '../../utils/covertDurationToTimeString';
 import { Episode as EpisodeType } from '../../types/episode.types';
 
@@ -27,8 +29,13 @@ interface EpisodeProps {
 }
 
 const Episode: React.FC<EpisodeProps> = ({ episode }) => {
+  const { play } = usePlayerContext();
+
   return (
     <div className={styles.episode}>
+      <Head>
+        <title>Podcastr | {episode.title}</title>
+      </Head>
       <div className={styles.thumbnailContainer}>
         <Link href="/">
           <button type="button">
@@ -44,7 +51,7 @@ const Episode: React.FC<EpisodeProps> = ({ episode }) => {
           alt={episode.title}
         />
 
-        <button type="button">
+        <button type="button" onClick={() => play(episode)}>
           <img src="/play.svg" alt="Reproduzir" />
         </button>
       </div>
